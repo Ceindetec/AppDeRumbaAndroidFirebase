@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "961037372808",
+    "firebase_url": "https://drumba-63ceb.firebaseio.com",
+    "project_id": "drumba-63ceb",
+    "storage_bucket": "drumba-63ceb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961037372808:android:5d6e54e60ef0e7de",
+        "android_client_info": {
+          "package_name": "co.org.ceindetec.derumba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961037372808-b364g0mvtcs7ich7si97d01huajr6f0g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBOpr-yhiVv1C7ha0YFV5I0khtLar5Z8g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

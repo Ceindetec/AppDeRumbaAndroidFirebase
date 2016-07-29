@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlyLoginContainerMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rlyLoginContainerLogo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/rlyLoginContainerButtons">
+
+        <ImageView
+            android:id="@+id/imvLogoMain"
+            android:layout_width="@dimen/image_size_logo_main"
+            android:layout_height="@dimen/image_size_logo_main"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/login.description.logo"
+            android:src="@drawable/logo_main_de_rumba" />
+
+        <TextView
+            android:id="@+id/txtLoginTitle"
+            android:layout_margin="@dimen/margin_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/imvLogoMain"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login.message.title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@id/rlyLoginContainerButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/bflButtonFacebookLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_marginMedium" />
+
+        <Button
+            android:id="@+id/btnButtonFacebookSignOut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bflButtonFacebookLogin"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_marginMedium"
+            android:text="Google" />
+
+        <Button
+            android:id="@+id/btnButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnButtonFacebookSignOut"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/activity_marginMedium"
+            android:text="DeRumba" />
+
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/txvStatusUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/txvDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+</RelativeLayout>
