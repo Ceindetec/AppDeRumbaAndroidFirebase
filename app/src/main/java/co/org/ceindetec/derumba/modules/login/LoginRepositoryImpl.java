@@ -1,18 +1,28 @@
 package co.org.ceindetec.derumba.modules.login;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.concurrent.Executor;
+
 import co.org.ceindetec.derumba.domain.FirebaseHelper;
-import co.org.ceindetec.derumba.entities.Session;
 import co.org.ceindetec.derumba.entities.User;
 import co.org.ceindetec.derumba.lib.EventBus;
 import co.org.ceindetec.derumba.lib.GreenRobotEventBus;
@@ -33,51 +43,6 @@ public class LoginRepositoryImpl implements LoginRepository {
         this.firebaseAuth = FirebaseAuth.getInstance();
     }
 
-    @Override
-    public void checkSession() {
-        if (firebaseAuth.getCurrentUser() != null) {
-            initSignIn();
-        } else {
-            postEvent(LoginEvent.onFailedToRecoverSession);
-        }
-    }
-
-    @Override
-    public void signUp(final String email, final String nick, final String password) {
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        postEvent(LoginEvent.onSignUpSuccess);
-                        signIn(email, password);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        postEvent(LoginEvent.onSignUpError, e.getMessage());
-                    }
-                });
-    }
-
-    @Override
-    public void signIn(String email, String password) {
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        initSignIn();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        postEvent(LoginEvent.onSignInError, e.getMessage());
-                    }
-                });
-    }
-
-
     private void initSignIn() {
         databaseReference = firebaseHelper.getMyUserReference();
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,7 +53,6 @@ public class LoginRepositoryImpl implements LoginRepository {
                 if (currentUser == null) {
                     registerNewUser();
                 }
-                firebaseHelper.changeUserConnectionStatus(User.ONLINE);
                 postEvent(LoginEvent.onSignInSuccess);
             }
 
@@ -100,13 +64,11 @@ public class LoginRepositoryImpl implements LoginRepository {
 
     private void registerNewUser() {
         String email = firebaseHelper.getAuthUserEmail();
-        String nick= Session.getInstance().getNick();
-
         if (email != null) {
             User currentUser = new User();
             currentUser.setEmail(email);
-            currentUser.setNick(nick);
-            databaseReference.setValue(currentUser);
+            currentUser.setUsername(firebaseHelper.getAuthUserName());
+            firebaseHelper.setNewUser(currentUser,firebaseAuth.getCurrentUser().getUid());
         }
     }
 
@@ -122,6 +84,70 @@ public class LoginRepositoryImpl implements LoginRepository {
     }
 
     private void postEvent(int type) {
+
         postEvent(type, null);
+
     }
+
+    @Override
+    public void checkSession() {
+        if (firebaseAuth.getCurrentUser() != null) {
+            initSignIn();
+        } else {
+            postEvent(LoginEvent.onFailedToRecoverSession);
+        }
+    }
+
+    @Override
+    public void signUpUserDeRumba(final String email, final String nick, final String password) {
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        postEvent(LoginEvent.onSignUpUSuccess);
+                        signInUserDeRumba(email, password);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        postEvent(LoginEvent.onSignUpUserDeRumbaError, e.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void signInUserDeRumba(String email, String password) {
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        initSignIn();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        postEvent(LoginEvent.onSignInUserDeRumbaError, e.getMessage());
+                    }
+                });
+    }
+
+    @Override
+    public void signInFacebookAccessToken(AccessToken token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (task.isSuccessful()) {
+                            initSignIn();
+                        } else {
+                            postEvent(LoginEvent.onSignInFacebookError);
+                        }
+                    }
+                });
+    }
+
 }

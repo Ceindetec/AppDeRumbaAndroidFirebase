@@ -1,20 +1,23 @@
 package co.org.ceindetec.derumba.modules.detailsong.ui;
 
+import co.org.ceindetec.derumba.entities.Song;
+
 /**
  * Created by Ceindetec02 on 21/07/2016.
  */
 public interface DetailSongView {
 
-    void showInput();
+    void getInfoSongSuccess(Song infoSong);
 
-    void hideInput();
+    void getInfoSongError();
+
+    void rankSongSuccess();
+
+    void rankSongError();
 
     void showProgress();
 
     void hideProgress();
 
-    void songRanked();
-
-    void SongNoRanked();
 
 }

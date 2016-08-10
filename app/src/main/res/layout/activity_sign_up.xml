@@ -16,7 +16,7 @@
         android:layout_above="@+id/wrapperNick">
 
         <EditText
-            android:id="@+id/editTxtEmail"
+            android:id="@+id/edtLoginEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:hint="@string/login.message.nick" />
+            android:hint="@string/login.message.username" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -46,13 +46,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/wrapperPassword"
-        android:layout_above="@+id/layoutButtons">
+        android:layout_above="@+id/llyButtonsLoginUserDeRumbaContainer">
 
         <EditText
-            android:id="@+id/editTxtPassword"
+            android:id="@+id/edtLoginPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editTxtEmail"
+            android:layout_below="@+id/edtLoginEmail"
             android:layout_centerHorizontal="true"
             android:ems="10"
             android:inputType="textPassword"
@@ -63,14 +63,14 @@
         android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/layoutButtons"
+        android:id="@+id/llyButtonsLoginUserDeRumbaContainer"
         android:layout_centerInParent="true">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/signup.button.sign_up"
-            android:id="@+id/btnSignUp"/>
+            android:id="@+id/btnLoginUserDeRumbaSignUp"/>
     </LinearLayout>
 
     <ProgressBar
@@ -78,7 +78,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_below="@id/layoutButtons"
+        android:layout_below="@id/llyButtonsLoginUserDeRumbaContainer"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
 

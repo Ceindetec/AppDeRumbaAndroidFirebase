@@ -5,6 +5,8 @@ package co.org.ceindetec.derumba.modules.detailsong;
  */
 public interface DetailSongInteractor {
 
-    void songRanked(int idEstablecimiento, int idCancion);
+    void getInfoSong(String codigoCancion);
+
+    void rankSong(String codigoPlaylist, String codigoCacion);
 
 }

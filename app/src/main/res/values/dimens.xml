@@ -41,11 +41,13 @@
 
     <dimen name="message_widget_height">60dp</dimen>
 
-    <!-- Tamaños texto contentPlaylist cancion -->
+    <!-- Tamaños texto contentPlaylist song -->
     <dimen name="text_size_posicion_song">30dp</dimen>
 
     <!-- Tamaños imagenes-->
-    <dimen name="image_size_rank">30dp</dimen>
+    <dimen name="image_size_small">10dp</dimen>
+    <dimen name="image_size_medium">20dp</dimen>
+    <dimen name="image_size_large">30dp</dimen>
     <dimen name="image_size_logo_main">150dp</dimen>
 
     <!---->

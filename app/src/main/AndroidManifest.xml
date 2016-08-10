@@ -36,17 +36,15 @@
 
         <!--Login opcion usuario DeRumba-->
 
-        <activity android:name=".modules.login.ui.LoginUserDeRumbaActivity" />
-
 
         <!--Creacion de usuario-->
 
         <activity
             android:name=".modules.login.ui.SignUpActivity"
-            android:parentActivityName=".modules.login.ui.LoginUserDeRumbaActivity">
+            android:parentActivityName=".modules.login.ui.LoginMainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".modules.login.ui.LoginUserDeRumbaActivity" />
+                android:value=".modules.login.ui.LoginMainActivity" />
         </activity>
 
         <!--Activities Modulo PlayList-->
@@ -54,7 +52,7 @@
         <activity
             android:name=".modules.playlist.ui.PlayListActivity"
             android:label="@string/playList.activity.title"
-            android:parentActivityName=".modules.login.ui.LoginUserDeRumbaActivity"
+            android:parentActivityName=".modules.login.ui.LoginMainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
     </application>

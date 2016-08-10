@@ -19,6 +19,11 @@ public class PlayListInteractorImpl implements PlayListInteractor {
     }
 
     @Override
+    public void datosDummy() {
+        playListRepository.datosDummy();
+    }
+
+    @Override
     public void subscribe() {
         playListRepository.subscribeToPlayListEvents();
     }

@@ -1,24 +1,18 @@
 package co.org.ceindetec.derumba.entities;
 
-import java.util.Map;
-
 /**
  * Created by Ceindetec02 on 12/07/2016.
  */
 public class User {
     String email;
-    String nick;
-    boolean online;
-    public final static boolean ONLINE = true;
-    public final static boolean OFFLINE = false;
+    String username;
 
     public User() {
     }
 
-    public User(String email, String nick, boolean online) {
+    public User(String email, String username) {
         this.email = email;
-        this.nick = nick;
-        this.online = online;
+        this.username = username;
     }
 
     public String getEmail() {
@@ -30,20 +24,12 @@ public class User {
     }
 
 
-    public String getNick() {
-        return nick;
+    public String getUsername() {
+        return username;
     }
 
-    public void setNick(String nick) {
-        this.nick = nick;
-    }
-
-    public boolean isOnline() {
-        return online;
-    }
-
-    public void setOnline(boolean online) {
-        this.online = online;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override

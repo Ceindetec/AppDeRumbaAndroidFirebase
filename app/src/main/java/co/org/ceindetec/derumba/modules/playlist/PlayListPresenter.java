@@ -7,13 +7,21 @@ import co.org.ceindetec.derumba.modules.playlist.events.PlayListEvent;
  */
 public interface PlayListPresenter {
 
+    void datosDummy();
+
     void onCreate();
 
     void onDestroy();
 
+    void onPause();
+
+    void onResume();
+
     void signOff();
 
     String getCurrentUserEmail();
+
+    String getCurrentUserName();
 
     void loadPlayList(int idEstablecimiento);
 

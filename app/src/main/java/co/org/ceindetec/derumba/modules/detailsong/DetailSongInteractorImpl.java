@@ -12,8 +12,19 @@ public class DetailSongInteractorImpl implements DetailSongInteractor {
         detailSongRepository = new DetailSongRepositoryImpl();
     }
 
+    /**
+     * @param codigoCancion
+     */
     @Override
-    public void songRanked(int idEstablecimiento, int idCancion) {
+    public void getInfoSong(String codigoCancion) {
+        detailSongRepository.getInfoSong(codigoCancion);
+    }
 
+    /**
+     * @param codigoCacion
+     */
+    @Override
+    public void rankSong(String codigoPlaylist, String codigoCacion) {
+        detailSongRepository.rankSong(codigoPlaylist, codigoCacion);
     }
 }

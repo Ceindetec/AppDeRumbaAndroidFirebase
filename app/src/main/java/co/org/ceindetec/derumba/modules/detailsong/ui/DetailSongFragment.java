@@ -9,12 +9,15 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import co.org.ceindetec.derumba.R;
+import co.org.ceindetec.derumba.entities.Song;
 import co.org.ceindetec.derumba.modules.detailsong.DetailSongPresenter;
 import co.org.ceindetec.derumba.modules.detailsong.DetailSongPresenterImpl;
 
@@ -23,29 +26,44 @@ import co.org.ceindetec.derumba.modules.detailsong.DetailSongPresenterImpl;
  */
 public class DetailSongFragment extends DialogFragment implements DetailSongView, DialogInterface.OnShowListener {
 
-
-    @Bind(R.id.txvDetailSongTitle)
-    TextView txvDetailSongTitle;
-    @Bind(R.id.txvDetailSongArtist)
-    TextView txvDetailSongArtist;
-    @Bind(R.id.txvDetailSongDuration)
+    //Bindedo de la vista
+    @Bind(R.id.txvDetailSongNombre)
+    TextView txvDetailSongNombre;
+    @Bind(R.id.txvDetailSongInterprete)
+    TextView txvDetailSongInterprete;
+    @Bind(R.id.txvDetailSongGenero)
+    TextView txvDetailSongGenero;
+    @Bind(R.id.txvDetailSongDuracion)
     TextView txvDetailSongDuration;
-    @Bind(R.id.pgbAddContactProgress)
-    ProgressBar pgbAddContactProgress;
+    @Bind(R.id.pgbDetailSongProgress)
+    ProgressBar pgbDetailSongProgress;
+    @Bind(R.id.imvRankedUp)
+    ImageView imvRankedUp;
 
+    //Declaracion del presentador para el detalle de la cancion
     DetailSongPresenter detailSongPresenter;
 
+    private String codigoCancion;
+    private String codigoPlaylist;
+
     public DetailSongFragment() {
+        //Inicializacion del presentador para el detalle de la cancion
         detailSongPresenter = new DetailSongPresenterImpl(this);
     }
 
+    /**
+     * @param savedInstanceState
+     * @return
+     */
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+        codigoCancion = getArguments().getString("codigoCancion");
+        codigoPlaylist = getArguments().getString("codigoPlaylist");
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
                 .setTitle(R.string.detailSong_activity_title)
-
                 .setPositiveButton(R.string.detailSong_button_exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -94,7 +112,6 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
         final AlertDialog alertDialog = (AlertDialog) getDialog();
         if (alertDialog != null) {
             Button possitiveButton = alertDialog.getButton(Dialog.BUTTON_POSITIVE);
-
             possitiveButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -103,36 +120,70 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
             });
         }
         detailSongPresenter.onShow();
+        detailSongPresenter.getInfoSong(codigoCancion);
     }
 
     @Override
-    public void showInput() {
+    public void getInfoSongSuccess(Song infoSong) {
+        String txtNombre = String.format(getString(R.string.detailSong_text_songNombre), infoSong.getNombre());
+        txvDetailSongNombre.setText(txtNombre);
 
+        String txtInterprete = String.format(getString(R.string.detailSong_text_songInterprete), infoSong.getInterprete());
+        txvDetailSongInterprete.setText(txtInterprete);
+
+        String txtGenero = String.format(getString(R.string.detailSong_text_songGenero), infoSong.getGenero());
+        txvDetailSongGenero.setText(txtGenero);
+
+        String txtDuracion = String.format(getString(R.string.detailSong_text_songDuracion), Integer.toString(infoSong.getDuracion() / 60));
+        txvDetailSongDuration.setText(txtDuracion);
     }
 
+    /**
+     *
+     */
     @Override
-    public void hideInput() {
-
+    public void getInfoSongError() {
+        //TO DO...
     }
 
+    /**
+     *
+     */
+    @Override
+    public void rankSongSuccess() {
+        dismiss();
+    }
+
+    /**
+     *
+     */
+    @Override
+    public void rankSongError() {
+        //TO DO...
+    }
+
+    /**
+     *
+     */
     @Override
     public void showProgress() {
-
+        pgbDetailSongProgress.setVisibility(View.VISIBLE);
     }
 
+    /**
+     *
+     */
     @Override
     public void hideProgress() {
-
+        pgbDetailSongProgress.setVisibility(View.GONE);
     }
 
-    @Override
-    public void songRanked() {
-
-    }
-
-    @Override
-    public void SongNoRanked() {
-
+    /**
+     *
+     */
+    @OnClick(R.id.imvRankedUp)
+    public void songRankUp() {
+        detailSongPresenter.rankSong(codigoPlaylist, codigoCancion);
     }
 
 }

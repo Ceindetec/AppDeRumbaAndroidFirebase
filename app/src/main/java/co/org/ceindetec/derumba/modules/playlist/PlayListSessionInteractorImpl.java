@@ -21,6 +21,11 @@ public class PlayListSessionInteractorImpl implements PlayListSessionInteractor 
     }
 
     @Override
+    public String getCurrentUserName() {
+        return playListRepository.getCurrentUserName();
+    }
+
+    @Override
     public void changeConnectionStatus(boolean online) {
         playListRepository.changeConnectionStatus(online);
     }

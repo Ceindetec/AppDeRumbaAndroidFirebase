@@ -11,9 +11,14 @@ public interface PlayListRepository {
 
     String getCurrentUserEmail();
 
+    String getCurrentUserName();
+
     void changeConnectionStatus(boolean online);
 
     //Metodos utilizados por PlayListInteractor
+
+    void datosDummy();
+
     void subscribeToPlayListEvents();
 
     void unsubscribeToPlayListEvents();

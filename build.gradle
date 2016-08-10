@@ -35,23 +35,31 @@ ext {
 
     supportLibraryVersion = '24.+'
 
-    //Version antigua de FireBase
-    //fireBaseClientVersion = '2.5.0+'
     //Version nueva para el uso de la libreria Firebase
-    firebaseVersion = '9.0.2'
-    //Libreria para mostrar imagenes circulares
-    circleImageViewVersion = '2.0.0'
-    //Libreria para la inyeccion de controles
-    butterKnifeVersion = '7.0.1'
-    //Libreria para el manejo del bus de eventos
-    eventBusVersion = '3.0.0'
-    //
-    glideVersion = '3.6.1'
-    //Libreria para peticiones del API
-    retrofitVersion = '2.0.0-beta4'
+    firebaseVersion = '9.2.1'
 
     //Libreria para el uso de Facebook
     facebookVersion = '[4,5)'
+
+    //Libreria para el uso de Google
+    googleVersion = '9.2.1'
+
+    //Libreria para mostrar imagenes circulares
+    circleImageViewVersion = '2.0.0'
+
+    //Libreria para la inyeccion de controles
+    butterKnifeVersion = '7.0.1'
+
+    //Libreria para el manejo del bus de eventos
+    eventBusVersion = '3.0.0'
+
+    //
+    glideVersion = '3.6.1'
+
+    //Libreria para peticiones del API
+    retrofitVersion = '2.0.0-beta4'
+
+    //Libreria para el uso de Google AUTH
     jsr250Version = '1.0'
 
 }

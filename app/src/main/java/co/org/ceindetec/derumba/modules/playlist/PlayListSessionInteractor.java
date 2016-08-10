@@ -9,5 +9,7 @@ public interface PlayListSessionInteractor {
 
     String getCurrentUserEmail();
 
+    String getCurrentUserName();
+
     void changeConnectionStatus(boolean online);
 }

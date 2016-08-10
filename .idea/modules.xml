@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DeRumba.iml" filepath="$PROJECT_DIR$/DeRumba.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppDeRumbaAndroidFirebase.iml" filepath="$PROJECT_DIR$/AppDeRumbaAndroidFirebase.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

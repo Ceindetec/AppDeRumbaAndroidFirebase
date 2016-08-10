@@ -21,13 +21,13 @@ import co.org.ceindetec.derumba.modules.playlist.ui.PlayListActivity;
 
 public class SignUpActivity extends AppCompatActivity implements LoginUserDeRumbaView {
 
-    @Bind(R.id.editTxtEmail)
+    @Bind(R.id.edtLoginEmail)
     EditText inputEmail;
     @Bind(R.id.editTxtNick)
     EditText inputNick;
-    @Bind(R.id.editTxtPassword)
+    @Bind(R.id.edtLoginPass)
     EditText inputPassword;
-    @Bind(R.id.btnSignUp)
+    @Bind(R.id.btnLoginUserDeRumbaSignUp)
     Button btnSignUp;
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
@@ -85,15 +85,9 @@ public class SignUpActivity extends AppCompatActivity implements LoginUserDeRumb
         progressBar.setVisibility(View.GONE);
     }
 
-    @OnClick(R.id.btnSignUp)
-    @Override
+    @OnClick(R.id.btnLoginUserDeRumbaSignUp)
     public void handleSignUp() {
         loginPresenter.registerNewUser(inputEmail.getText().toString(),inputNick.getText().toString(), inputPassword.getText().toString());
-    }
-
-    @Override
-    public void handleSignIn() {
-        throw new UnsupportedOperationException("Operation is not valid in SignUpActivity");
     }
 
     @Override

@@ -16,20 +16,17 @@ import android.widget.SearchView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import co.org.ceindetec.derumba.R;
-import co.org.ceindetec.derumba.entities.PlayList;
-import co.org.ceindetec.derumba.entities.Session;
+import co.org.ceindetec.derumba.entities.PlaylistSong;
 import co.org.ceindetec.derumba.modules.detailsong.ui.DetailSongFragment;
 import co.org.ceindetec.derumba.modules.login.ui.LoginMainActivity;
-import co.org.ceindetec.derumba.modules.login.ui.LoginUserDeRumbaActivity;
 import co.org.ceindetec.derumba.modules.playlist.PlayListPresenter;
 import co.org.ceindetec.derumba.modules.playlist.PlayListPresenterImpl;
-import co.org.ceindetec.derumba.modules.playlist.ui.funcionalities.OnItemClickListener;
-import co.org.ceindetec.derumba.modules.playlist.ui.funcionalities.PlayListAdapter;
+import co.org.ceindetec.derumba.modules.playlist.ui.adapters.OnItemClickListener;
+import co.org.ceindetec.derumba.modules.playlist.ui.adapters.PlayListAdapter;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PlayListActivity extends AppCompatActivity implements PlayListView, OnItemClickListener {
@@ -75,16 +72,18 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
         //Dato dummy del id del establecimiento
         idEstablecimiento = 0;
 
+        //Instanciamiento de la interfaz LoginPresenter
+        playListPresenter = new PlayListPresenterImpl(this);
+
+        //playListPresenter.datosDummy();
+
+        playListPresenter.onCreate();
+
         //Llamado al metodo que inicializa el Adaptador
         setupAdapter();
 
         //Llamado al metodo que inicializa el RecyclerView
         setupRecyclerView();
-
-        //Instanciamiento de la interfaz LoginPresenter
-        playListPresenter = new PlayListPresenterImpl(this);
-        playListPresenter.onCreate();
-        playListPresenter.loadPlayList(idEstablecimiento);
 
         //Llamado al metodo que inicializa el ToolBar
         setupToolbar();
@@ -115,7 +114,7 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
      */
     @Override
     protected void onDestroy() {
-        //playListPresenter.onDestroy();
+        playListPresenter.onDestroy();
         super.onDestroy();
     }
 
@@ -123,29 +122,7 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
      * Metodo que inicializa y configura el Adaptador
      */
     private void setupAdapter() {
-
-        //Dummy de datos
-        List<PlayList> song = new ArrayList<PlayList>();
-        song.add(new PlayList(idEstablecimiento, 1, "Una Cancion", 100));
-        song.add(new PlayList(idEstablecimiento, 2, "La Macarena", 200));
-        song.add(new PlayList(idEstablecimiento, 3, "El Ultimo Polvo", 300));
-        song.add(new PlayList(idEstablecimiento, 4, "El Baile De Los Que Sobran", 400));
-        song.add(new PlayList(idEstablecimiento, 5, "Can't stop the feeling", 400));
-        song.add(new PlayList(idEstablecimiento, 6, "One dance", 400));
-        song.add(new PlayList(idEstablecimiento, 7, "This girl", 400));
-        song.add(new PlayList(idEstablecimiento, 8, "Don't let me down", 400));
-        song.add(new PlayList(idEstablecimiento, 9, "Ride", 400));
-        song.add(new PlayList(idEstablecimiento, 10, "Gallo negro", 400));
-        song.add(new PlayList(idEstablecimiento, 11, "We don't talk anymore", 400));
-        song.add(new PlayList(idEstablecimiento, 12, "Cheap thrills", 400));
-        song.add(new PlayList(idEstablecimiento, 13, "I took a pill in Ibiza (Explicit version)", 400));
-        song.add(new PlayList(idEstablecimiento, 14, "Work from home", 400));
-        song.add(new PlayList(idEstablecimiento, 15, "Rumbo al sol", 400));
-        song.add(new PlayList(idEstablecimiento, 16, "Don't you need somebody", 400));
-        song.add(new PlayList(idEstablecimiento, 17, "Send my love (To your new lover)", 400));
-        playListAdapter = new PlayListAdapter(song, this);
-
-        //playListAdapter = new PlayListAdapter(new ArrayList<PlayList>(), this);
+        playListAdapter = new PlayListAdapter(new ArrayList<PlaylistSong>(), this);
     }
 
     /**
@@ -157,8 +134,23 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
     }
 
     private void setupToolbar() {
-        tlbPlayList.setTitle(Session.getInstance().getNick());
+        tlbPlayList.setTitle(playListPresenter.getCurrentUserName());
         setSupportActionBar(tlbPlayList);
+    }
+
+    @Override
+    public void onSongAdded(PlaylistSong songPlayList) {
+        playListAdapter.add(songPlayList);
+    }
+
+    @Override
+    public void onSongChanged(PlaylistSong songPlayList) {
+        playListAdapter.update(songPlayList);
+    }
+
+    @Override
+    public void onSongRemoved(PlaylistSong songPlayList) {
+        playListAdapter.remove(songPlayList);
     }
 
     @Override
@@ -177,8 +169,16 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
     }
 
     @Override
-    public void onItemClick(PlayList playListItem) {
-        new DetailSongFragment().show(getSupportFragmentManager(), getString(R.string.detailSong_activity_title));
+    public void onItemClick(PlaylistSong playListItem) {
+
+        Bundle args = new Bundle();
+        args.putString("codigoPlaylist", playListItem.getCodigoPlaylist());
+        args.putString("codigoCancion", playListItem.getCodigoCancion());
+
+        DetailSongFragment detailSongFragment = new DetailSongFragment();
+        detailSongFragment.setArguments(args);
+        detailSongFragment.show(getSupportFragmentManager(), getString(R.string.detailSong_activity_title));
+
     }
 
 }

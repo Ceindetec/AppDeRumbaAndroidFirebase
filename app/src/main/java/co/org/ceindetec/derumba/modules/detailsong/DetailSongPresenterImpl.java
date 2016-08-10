@@ -2,6 +2,7 @@ package co.org.ceindetec.derumba.modules.detailsong;
 
 import org.greenrobot.eventbus.Subscribe;
 
+import co.org.ceindetec.derumba.entities.Song;
 import co.org.ceindetec.derumba.lib.EventBus;
 import co.org.ceindetec.derumba.lib.GreenRobotEventBus;
 import co.org.ceindetec.derumba.modules.detailsong.events.DetailSongEvent;
@@ -40,24 +41,78 @@ public class DetailSongPresenterImpl implements DetailSongPresenter {
         eventBus.unregister(this);
     }
 
+    /**
+     * Metodo implementado de la interface DetailSongPresenter que obtiene la información de la canción
+     */
     @Override
-    public void songRanked(int idEstablecimiento, int idCancion) {
-
+    public void getInfoSong(String codigoCancion) {
+        detailSongView.showProgress();
+        detailSongInteractor.getInfoSong(codigoCancion);
     }
 
+    /**
+     * @param codigoCancion
+     */
+    @Override
+    public void rankSong(String codigoPlaylist, String codigoCancion) {
+        detailSongView.showProgress();
+        detailSongInteractor.rankSong(codigoPlaylist, codigoCancion);
+    }
+
+    /**
+     * @param detailSongEvent
+     */
     @Override
     @Subscribe
     public void onEventMainThread(DetailSongEvent detailSongEvent) {
-        if (detailSongView != null) {
-            detailSongView.hideProgress();
-            detailSongView.showInput();
-
-            if (detailSongEvent.isError()) {
-                detailSongView.SongNoRanked();
-            } else {
-                detailSongView.songRanked();
-            }
-
+        Song song = detailSongEvent.getInfoSong();
+        switch (detailSongEvent.getEventType()) {
+            case DetailSongEvent.onGetInfoSongSuccess:
+                onGetInfoSongSuccess(song);
+                break;
+            case DetailSongEvent.onGetInfoSongError:
+                onGetInfoSongError();
+                break;
+            case DetailSongEvent.onRankSongSuccess:
+                onRankSongSuccess();
+                break;
+            case DetailSongEvent.onRankSongError:
+                onRankSongError();
+                break;
         }
     }
+
+    /**
+     * @param song
+     */
+    private void onGetInfoSongSuccess(Song song) {
+        detailSongView.hideProgress();
+        detailSongView.getInfoSongSuccess(song);
+    }
+
+    /**
+     * Metodo
+     */
+    private void onGetInfoSongError() {
+        detailSongView.hideProgress();
+        detailSongView.getInfoSongError();
+    }
+
+    /**
+     *
+     */
+    private void onRankSongSuccess() {
+        detailSongView.hideProgress();
+        detailSongView.rankSongSuccess();
+    }
+
+    /**
+     *
+     */
+    private void onRankSongError() {
+        detailSongView.hideProgress();
+        detailSongView.rankSongError();
+    }
+
+
 }

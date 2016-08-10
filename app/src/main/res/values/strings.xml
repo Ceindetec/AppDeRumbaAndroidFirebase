@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">DeRumba</string>
 
+    <!-- Strings de uso general de la aplicacion-->
+    <string name="general.message.loading">Cargando...</string>
+
     <!--Strings utilizados en la vista PlayList-->
     <string name="playList.activity.title">PlayList</string>
     <string name="playList.message.searchSong">Buscar canción...</string>
@@ -10,22 +13,27 @@
     <!--String utilizados en la vista Detail Song-->
     <string name="detailSong.activity.title">Información Adicional</string>
     <string name="detailSong.button.exit">Volver a Playlist</string>
-    <string name="detailSong.text.songTitle">Titulo</string>
-    <string name="detailSong.text.songArtist">Artista</string>
-    <string name="detailSong.text.songDuration">Duración</string>
+    <string name="detailSong.text.songNombre">Título: %s</string>
+    <string name="detailSong.text.songInterprete">Interprete: %s</string>
+    <string name="detailSong.text.songGenero">Genero: %s</string>
+    <string name="detailSong.text.songDuracion">Duración: %s seg</string>
+    <string name="detailSong.text.descriptionImageRankUp">Me Gusta</string>
+    <string name="detailSong.error.songNoRanked">El voto no pudo ser registrado</string>
+    <string name="detailSong.error.songNoInfo">La información no pudo ser encontrada...</string>
 
     <!--String utilizados en la vista Login-->
     <string name="login.message.email">Correo electrónico</string>
-    <string name="login.message.nick">Nickname</string>
+    <string name="login.message.username">Nickname</string>
     <string name="login.message.password">Password</string>
     <string name="login.message.title">Bienvenido a DeRumba</string>
-    <string name="login.message.cancel_login">Cancelaste el inicio de Sesión</string>
-    <string name="login.message.loading">Cargando...</string>
+    <string name="login.message.cancel_facebook">Cancelaste el inicio de sesión de Facebook</string>
+    <string name="login.message.cancel_google">Cancelaste el inicio de sesión de Google</string>
+    <string name="login.message.error">Error en el inicio de sesión</string>
 
     <string name="login.description.logo">Logo DeRumba</string>
 
-    <string name="login.button.sign_in">Iniciar Sessión</string>
-    <string name="login.button.sign_off">Cerrar Sessión</string>
+    <string name="login.button.sign_in">Iniciar Sesión</string>
+    <string name="login.button.sign_off">Cerrar Sesión</string>
     <string name="login.button.sign_out">Desconectado</string>
     <string name="login.button.goto_sign_up">Ir a Crear cuenta &gt;</string>
 

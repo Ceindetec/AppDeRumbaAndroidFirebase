@@ -1,17 +1,33 @@
 package co.org.ceindetec.derumba.modules.detailsong.events;
 
+import co.org.ceindetec.derumba.entities.Song;
+
 /**
  * Created by Ceindetec02 on 21/07/2016.
  */
 public class DetailSongEvent {
 
-    boolean error = false;
+    public final static int onGetInfoSongSuccess = 0;
+    public final static int onGetInfoSongError = 1;
+    public final static int onRankSongSuccess = 2;
+    public final static int onRankSongError = 3;
 
-    public boolean isError() {
-        return error;
+    private Song infoSong;
+    private int eventType;
+
+    public Song getInfoSong() {
+        return infoSong;
     }
 
-    public void setError(boolean error) {
-        this.error = error;
+    public void setInfoSong(Song infoSong) {
+        this.infoSong = infoSong;
+    }
+
+    public int getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(int eventType) {
+        this.eventType = eventType;
     }
 }

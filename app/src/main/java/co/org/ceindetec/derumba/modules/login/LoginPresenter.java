@@ -1,5 +1,8 @@
 package co.org.ceindetec.derumba.modules.login;
 
+import com.facebook.AccessToken;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+
 import co.org.ceindetec.derumba.modules.login.events.LoginEvent;
 
 /**
@@ -18,7 +21,7 @@ public interface LoginPresenter {
 
     void validateLoginUserDeRumba(String email, String password);
 
-    void loginFacebook();
+    void signInFacebookAccessToken(AccessToken token);
 
     void registerNewUser(String email, String nick, String password);
 

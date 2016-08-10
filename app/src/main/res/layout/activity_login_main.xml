@@ -22,11 +22,11 @@
 
         <TextView
             android:id="@+id/txtLoginTitle"
-            android:layout_margin="@dimen/margin_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/imvLogoMain"
             android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/margin_small"
             android:text="@string/login.message.title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -37,7 +37,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true">
+<!--
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrpEdtLoginEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
+            <EditText
+                android:id="@+id/edtLoginEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/login.message.email"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/wrpEdtLoginPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wrpEdtLoginEmail"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/edtLoginPass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtLoginEmail"
+                android:layout_centerHorizontal="true"
+                android:ems="10"
+                android:hint="@string/login.message.password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/btnLoginUserDeRumbaSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/wrpEdtLoginPass"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login.button.sign_in"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btnLoginUserDeRumbaSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnLoginUserDeRumbaSignIn"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login.button.goto_sign_up"
+            android:visibility="gone" />
+-->
         <com.facebook.login.widget.LoginButton
             android:id="@+id/bflButtonFacebookLogin"
             android:layout_width="wrap_content"
@@ -45,31 +97,16 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="@dimen/activity_marginMedium" />
 
-        <Button
-            android:id="@+id/btnButtonFacebookSignOut"
+        <ProgressBar
+            android:id="@+id/pgbLoginUserDeRumbaProgress"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/bflButtonFacebookLogin"
+            android:layout_below="@id/bflButtonFacebookLogin"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_marginMedium"
-            android:text="Google" />
+            android:visibility="gone" />
 
-        <Button
-            android:id="@+id/btnButton1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnButtonFacebookSignOut"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_marginMedium"
-            android:text="DeRumba" />
 
     </RelativeLayout>
-    <TextView
-        android:id="@+id/txvStatusUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <TextView
-        android:id="@+id/txvDetailUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+
 </RelativeLayout>

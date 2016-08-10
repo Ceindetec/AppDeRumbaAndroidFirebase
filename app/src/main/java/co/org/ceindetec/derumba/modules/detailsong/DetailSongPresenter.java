@@ -10,7 +10,9 @@ public interface DetailSongPresenter {
 
     void onDestroy();
 
-    void songRanked(int idEstablecimiento, int idCancion);
+    void getInfoSong(String codigoCancion);
+
+    void rankSong(String codigoPlaylist, String codigoCancion);
 
     void onEventMainThread(DetailSongEvent detailSongEvent);
 }
