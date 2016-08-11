@@ -14,10 +14,10 @@
 
         <ImageView
             android:id="@+id/imvLogoMain"
-            android:layout_width="@dimen/image_size_logo_main"
-            android:layout_height="@dimen/image_size_logo_main"
+            android:layout_width="@dimen/deRumbaImageSizeLogoMain"
+            android:layout_height="@dimen/deRumbaImageSizeLogoMain"
             android:layout_centerHorizontal="true"
-            android:contentDescription="@string/login.description.logo"
+            android:contentDescription="@string/login.description.logoDerumba"
             android:src="@drawable/logo_main_de_rumba" />
 
         <TextView
@@ -26,8 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/imvLogoMain"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/margin_small"
-            android:text="@string/login.message.title"
+            android:layout_margin="@dimen/deRumbaMarginSmall"
+            android:text="@string/login.text.title"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </RelativeLayout>
@@ -95,7 +95,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_margin="@dimen/activity_marginMedium" />
+            android:layout_margin="@dimen/deRumbaMarginMedium" />
 
         <ProgressBar
             android:id="@+id/pgbLoginUserDeRumbaProgress"

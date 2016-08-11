@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity implements LoginUserDeRumb
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(this);
 
-        setTitle(getString(R.string.signup_title));
+        setTitle(getString(R.string.signup_activity_title));
 
         loginPresenter = new LoginPresenterImpl(this);
     }
@@ -104,13 +104,13 @@ public class SignUpActivity extends AppCompatActivity implements LoginUserDeRumb
 
     @Override
     public void newUserSuccess() {
-        Snackbar.make(container, R.string.login_notice_message_sign_up, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(container, R.string.login_messageSuccess_signUp, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
     public void newUserError(String error) {
         inputPassword.setText("");
-        String msgError = String.format(getString(R.string.login_error_message_sign_up), error);
+        String msgError = String.format(getString(R.string.login_messageError_signUp), error);
         inputPassword.setError(msgError);
     }
 

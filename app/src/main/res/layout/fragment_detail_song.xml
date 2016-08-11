@@ -6,68 +6,78 @@
 
     <ProgressBar
         android:id="@+id/pgbDetailSongProgress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:layout_centerInParent="true"
-        android:visibility="gone" />
+        style="@style/deRumbaStyleProgressBar" />
 
     <TextView
         android:id="@+id/txvDetailSongNombre"
+        style="@style/deRumbaStyleTextSecondaryMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:text="@string/general.message.loading"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_margin="@dimen/deRumbaMarginMedium"
+        android:text="@string/general.message.loading" />
 
     <TextView
         android:id="@+id/txvDetailSongInterprete"
+        style="@style/deRumbaStyleTextSecondarySmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txvDetailSongNombre"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:layout_marginRight="@dimen/activity_horizontal_marginMedium"
-        android:text="@string/general.message.loading"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_margin="@dimen/deRumbaMarginMedium"
+        android:layout_marginRight="@dimen/deRumbaMarginMedium"
+        android:text="@string/general.message.loading" />
 
     <TextView
         android:id="@+id/txvDetailSongGenero"
+        style="@style/deRumbaStyleTextSecondarySmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txvDetailSongInterprete"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:text="@string/general.message.loading"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_margin="@dimen/deRumbaMarginMedium"
+        android:text="@string/general.message.loading" />
 
 
     <TextView
         android:id="@+id/txvDetailSongDuracion"
+        style="@style/deRumbaStyleTextSecondarySmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txvDetailSongGenero"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:text="@string/general.message.loading"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_margin="@dimen/deRumbaMarginMedium"
+        android:text="@string/general.message.loading" />
 
     <LinearLayout
         android:id="@+id/llyDividerDetailSong"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/txvDetailSongDuracion"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:background="@color/colorDivider"
-        android:orientation="horizontal" />
+        style="@style/deRumbaStyleDivider"
+        android:layout_below="@id/txvDetailSongDuracion" />
 
-    <ImageView
-        android:id="@+id/imvRankedUp"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@id/llyDividerDetailSong"
-        android:layout_margin="@dimen/activity_marginMedium"
-        android:contentDescription="@string/detailSong.text.descriptionImageRankUp"
-        android:src="@drawable/ic_thumb_up_black_24dp" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imvBackPlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/deRumbaMarginMedium"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/detailSong.description.imageRankUp"
+            android:src="@drawable/ic_remove_circle_black_48dp" />
+
+        <ImageView
+            android:id="@+id/imvRankUp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/deRumbaMarginMedium"
+            android:layout_weight="1.0"
+            android:contentDescription="@string/detailSong.description.imageRankUp"
+            android:src="@drawable/ic_thumb_up_black_48dp"
+            android:visibility="visible"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>

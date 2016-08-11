@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="playList.activity.title">PlayList</string>
+
+    <string name="playList.text.searchSong">Buscar canción...</string>
+    <string name="playList.text.noMessages">No tienes mensajes nuevos</string>
+</resources>

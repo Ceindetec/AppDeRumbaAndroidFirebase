@@ -65,7 +65,7 @@
         <LinearLayout
             android:id="@id/llyIncContentMessage"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/message_widget_height"
+            android:layout_height="@dimen/deRumbaWidgetMessage"
             android:layout_alignParentBottom="true">
 
             <include

@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_toEndOf="@id/imvImageMessage"
         android:layout_toRightOf="@id/imvImageMessage"
-        android:paddingLeft="@dimen/activity_horizontal_marginMedium"
-        android:text="@string/playList.message.noMessages"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:paddingLeft="@dimen/deRumbaMarginMedium"
+        android:text="@string/playList.text.noMessages"
+        style="@style/deRumbaStyleTextSecondaryMedium"/>
 </RelativeLayout>

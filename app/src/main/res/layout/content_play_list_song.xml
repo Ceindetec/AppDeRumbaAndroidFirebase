@@ -5,57 +5,44 @@
 
     <TextView
         android:id="@+id/txvPosicionCancion"
+        style="@style/deRumbaStyleTextPrimaryMedium"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/text_size_posicion_song"
-        android:text="000"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_height="@dimen/deRumbaTextSizeLarge"
+        android:text="000" />
 
     <TextView
         android:id="@+id/txvNombreCancion"
+        style="@style/deRumbaStyleTextPrimaryMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/activity_horizontal_marginMedium"
-        android:layout_toLeftOf="@+id/imvExpandData"
+        android:layout_marginLeft="@dimen/deRumbaMarginMedium"
         android:layout_toRightOf="@id/txvPosicionCancion"
-        android:text="Nombre Cancion"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="Nombre Cancion" />
 
     <ImageView
         android:id="@+id/imvLikesSong"
-        android:layout_width="@dimen/image_size_medium"
-        android:layout_height="@dimen/image_size_medium"
+        android:layout_width="@dimen/deRumbaImageSizeSmall"
+        android:layout_height="@dimen/deRumbaImageSizeSmall"
         android:layout_below="@id/txvNombreCancion"
-        android:layout_marginLeft="@dimen/activity_horizontal_marginMedium"
-        android:layout_marginTop="@dimen/activity_horizontal_marginSmall"
+        android:layout_marginLeft="@dimen/deRumbaMarginMedium"
+        android:layout_marginTop="@dimen/deRumbaMarginXtraSmall"
         android:layout_toRightOf="@id/txvPosicionCancion"
         android:contentDescription="Likes"
         android:src="@drawable/ic_thumb_up_black_18dp" />
 
     <TextView
         android:id="@+id/txvLikesCancion"
+        style="@style/deRumbaStyleTextSecondarySmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txvNombreCancion"
-        android:layout_marginLeft="@dimen/activity_horizontal_marginSmall"
-        android:layout_marginTop="@dimen/activity_horizontal_marginSmall"
+        android:layout_marginLeft="@dimen/deRumbaMarginSmall"
+        android:layout_marginTop="@dimen/deRumbaMarginXtraSmall"
         android:layout_toRightOf="@id/imvLikesSong"
-        android:text="Nombre Cancion"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <ImageView
-        android:id="@+id/imvExpandData"
-        android:layout_width="@dimen/image_size_large"
-        android:layout_height="@dimen/image_size_large"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="@dimen/activity_horizontal_marginSmall"
-        android:contentDescription="Detalle"
-        android:src="@drawable/ic_queue_music_black_24dp" />
+        android:text="Nombre Cancion" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/imvLikesSong"
-        android:layout_marginBottom="@dimen/activity_vertical_marginSmall"
-        android:layout_marginTop="@dimen/activity_vertical_marginSmall"
-        android:background="@color/colorPrimaryDark" />
+        style="@style/deRumbaStyleDivider"
+        android:layout_below="@id/imvLikesSong" />
+
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package co.org.ceindetec.derumba.modules.playlist.ui;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -67,7 +68,11 @@ public class PlayListActivity extends AppCompatActivity implements PlayListView,
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_music_list);
+
+        setContentView(R.layout.activity_play_list);
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         ButterKnife.bind(this);
         //Dato dummy del id del establecimiento
         idEstablecimiento = 0;

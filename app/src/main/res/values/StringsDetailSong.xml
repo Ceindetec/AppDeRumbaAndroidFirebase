@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="detailSong.activity.title">Información Adicional</string>
+
+    <string name="detailSong.button.positive">Me gusta</string>
+    <string name="detailSong.button.negative">Volver a Playlist</string>
+
+    <string name="detailSong.text.songNombre">Título: %s</string>
+    <string name="detailSong.text.songInterprete">Interprete: %s</string>
+    <string name="detailSong.text.songGenero">Genero: %s</string>
+    <string name="detailSong.text.songDuracion">Duración: %s seg</string>
+
+    <string name="detailSong.description.imageRankUp">Me Gusta</string>
+
+    <string name="detailSong.messageSuccess.songRanked">Se ha registrado tu voto</string>
+    <string name="detailSong.messageError.songNoRanked">El voto no pudo ser registrado</string>
+    <string name="detailSong.messageError.songNoInfo">La información no pudo ser encontrada...</string>
+</resources>

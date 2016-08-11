@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="deRumbaImageSizeSmall">10dp</dimen>
+    <dimen name="deRumbaImageSizeMedium">20dp</dimen>
+    <dimen name="deRumbaImageSizeLarge">30dp</dimen>
+
+    <dimen name="deRumbaImageCircle">30dp</dimen>
+    <dimen name="deRumbaImageCircleBorder">1dp</dimen>
+
+    <dimen name="deRumbaImageSizeLogoMain">150dp</dimen>
+</resources>

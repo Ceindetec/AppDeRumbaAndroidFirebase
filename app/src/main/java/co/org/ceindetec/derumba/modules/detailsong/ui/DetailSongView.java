@@ -15,6 +15,8 @@ public interface DetailSongView {
 
     void rankSongError();
 
+    void verifyUserLike(boolean likeExist);
+
     void showProgress();
 
     void hideProgress();

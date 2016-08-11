@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Margins de la App DeRumba-->
+
+    <dimen name="deRumbaMarginXtraLarge">20dp</dimen>
+    <dimen name="deRumbaMarginLarge">15dp</dimen>
+    <dimen name="deRumbaMarginMedium">10dp</dimen>
+    <dimen name="deRumbaMarginSmall">5dp</dimen>
+    <dimen name="deRumbaMarginXtraSmall">2dp</dimen>
+
+    <!-- Paddings de la App DeRumba-->
+
+    <dimen name="deRumbaPaddingXtraLarge">20dp</dimen>
+    <dimen name="deRumbaPaddingLarge">15dp</dimen>
+    <dimen name="deRumbaPaddingMedium">10dp</dimen>
+    <dimen name="deRumbaPaddingSmall">5dp</dimen>
+    <dimen name="deRumbaPaddingXtraSmall">2dp</dimen>
+
+</resources>

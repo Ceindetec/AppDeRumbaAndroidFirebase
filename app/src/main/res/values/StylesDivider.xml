@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="deRumbaStyleDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/deRumbaDividerSize</item>
+        <item name="android:layout_margin">@dimen/deRumbaMarginSmall</item>
+        <item name="android:background">@color/deRumbaColorDivider</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+</resources>

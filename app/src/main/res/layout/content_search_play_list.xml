@@ -11,18 +11,18 @@
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@+id/imgAddSong"
         android:layout_toStartOf="@id/imgAddSong"
-        android:queryHint="@string/playList.message.searchSong"
+        android:queryHint="@string/playList.text.searchSong"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@id/imgAddSong"
-        android:layout_width="@dimen/circle_image_size"
-        android:layout_height="@dimen/circle_image_size"
+        android:layout_width="@dimen/deRumbaImageCircle"
+        android:layout_height="@dimen/deRumbaImageCircle"
         android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/margin_small"
+        android:layout_margin="@dimen/deRumbaMarginSmall"
         android:src="@drawable/ic_add_circle_black_24dp"
         app:civ_border_color="@color/colorAccent"
-        app:civ_border_width="@dimen/circle_image_border_width" />
+        app:civ_border_width="@dimen/deRumbaImageCircleBorder" />
 
 
 </RelativeLayout>

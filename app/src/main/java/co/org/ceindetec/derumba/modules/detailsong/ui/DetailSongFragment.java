@@ -8,10 +8,10 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -37,8 +37,10 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
     TextView txvDetailSongDuration;
     @Bind(R.id.pgbDetailSongProgress)
     ProgressBar pgbDetailSongProgress;
-    @Bind(R.id.imvRankedUp)
-    ImageView imvRankedUp;
+    @Bind(R.id.imvRankUp)
+    ImageView imvRankUp;
+    @Bind(R.id.imvBackPlaylist)
+    ImageView imvBackPlaylist;
 
     //Declaracion del presentador para el detalle de la cancion
     DetailSongPresenter detailSongPresenter;
@@ -52,6 +54,8 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
     }
 
     /**
+     * Constructor de la clase del Dialogfragment
+     *
      * @param savedInstanceState
      * @return
      */
@@ -63,13 +67,7 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
         codigoPlaylist = getArguments().getString("codigoPlaylist");
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                .setTitle(R.string.detailSong_activity_title)
-                .setPositiveButton(R.string.detailSong_button_exit, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
+                .setTitle(R.string.detailSong_activity_title);
 
         // Inflate the layout for this fragment
         View view = getActivity().getLayoutInflater().inflate(R.layout.fragment_detail_song, null);
@@ -109,20 +107,16 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
      */
     @Override
     public void onShow(DialogInterface dialog) {
-        final AlertDialog alertDialog = (AlertDialog) getDialog();
-        if (alertDialog != null) {
-            Button possitiveButton = alertDialog.getButton(Dialog.BUTTON_POSITIVE);
-            possitiveButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismiss();
-                }
-            });
-        }
         detailSongPresenter.onShow();
         detailSongPresenter.getInfoSong(codigoCancion);
+        detailSongPresenter.verifyLikeSong(codigoPlaylist, codigoCancion);
     }
 
+    /**
+     * Metodo implementado de la interface DetailSongView en el evento de informacion de la cancion obtenida correctamente
+     *
+     * @param infoSong
+     */
     @Override
     public void getInfoSongSuccess(Song infoSong) {
         String txtNombre = String.format(getString(R.string.detailSong_text_songNombre), infoSong.getNombre());
@@ -139,51 +133,86 @@ public class DetailSongFragment extends DialogFragment implements DetailSongView
     }
 
     /**
-     *
+     * Metodo implementado de la interface DetailSongView en el evento de informacion de la cancion no ha sido obtenida correctamente
      */
     @Override
     public void getInfoSongError() {
-        //TO DO...
+
+        Toast.makeText(getActivity(), this.getString(R.string.detailSong_messageError_songNoInfo), Toast.LENGTH_SHORT).show();
+
     }
 
     /**
-     *
+     * Metodo implementado de la interface DetailSongView en el evento de el ranked se ha realizado correctamente
      */
     @Override
     public void rankSongSuccess() {
-        dismiss();
+        Toast.makeText(getActivity(), this.getString(R.string.detailSong_messageSuccess_songRanked), Toast.LENGTH_SHORT).show();
+        backToPlaylist();
     }
 
     /**
-     *
+     * Metodo implementado de la interface DetailSongView en el evento de el ranked no se ha realizado correctamente
      */
     @Override
     public void rankSongError() {
-        //TO DO...
+
+        Toast.makeText(getActivity(), this.getString(R.string.detailSong_messageError_songNoRanked), Toast.LENGTH_SHORT).show();
+
     }
 
     /**
-     *
+     * Metodo implementado de la interface DetailSongView para mostrar la barra de progreso
      */
     @Override
     public void showProgress() {
+
         pgbDetailSongProgress.setVisibility(View.VISIBLE);
+
     }
 
     /**
-     *
+     * Metodo implementado de la interface DetailSongView para ocultar la barra de progreso
      */
     @Override
     public void hideProgress() {
+
         pgbDetailSongProgress.setVisibility(View.GONE);
+
     }
 
     /**
+     * * Metodo implementado de la interface DetailSongView para verificar el like del usuario
      *
+     * @param likeExist
      */
-    @OnClick(R.id.imvRankedUp)
+    @Override
+    public void verifyUserLike(boolean likeExist) {
+        if (likeExist) {
+            imvRankUp.setImageResource(R.drawable.ic_thumb_down_black_48dp);
+        } else {
+            imvRankUp.setImageResource(R.drawable.ic_thumb_up_black_48dp);
+        }
+    }
+
+    /**
+     * Metodo que ranquea la cancion
+     */
+    @OnClick(R.id.imvRankUp)
     public void songRankUp() {
+
         detailSongPresenter.rankSong(codigoPlaylist, codigoCancion);
+
+    }
+
+    /**
+     * Metodo para navegar a la Playlist
+     */
+    @OnClick(R.id.imvBackPlaylist)
+    public void backToPlaylist() {
+
+        dismiss();
+
     }
 
 }

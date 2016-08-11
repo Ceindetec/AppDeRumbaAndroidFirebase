@@ -9,8 +9,12 @@ public class DetailSongEvent {
 
     public final static int onGetInfoSongSuccess = 0;
     public final static int onGetInfoSongError = 1;
+
     public final static int onRankSongSuccess = 2;
     public final static int onRankSongError = 3;
+
+    public final static int onUserLike = 4;
+    public final static int onUserNoLike = 5;
 
     private Song infoSong;
     private int eventType;

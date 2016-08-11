@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login.activity.title">Login</string>
+
+    <string name="login.text.title">Bienvenido a DeRumba</string>
+    <string name="login.text.email">Correo electrónico</string>
+    <string name="login.text.username">Nickname</string>
+    <string name="login.text.password">Password</string>
+
+    <string name="login.messageCancel.facebook">Cancelaste el inicio de sesión de Facebook</string>
+    <string name="login.messageCancel.google">Cancelaste el inicio de sesión de Google</string>
+
+    <string name="login.messageError.login">Error en el inicio de sesión</string>
+
+    <string name="login.description.logoDerumba">Logo DeRumba</string>
+
+    <string name="login.button.signIn">Iniciar Sesión</string>
+    <string name="login.button.signOff">Cerrar Sesión</string>
+    <string name="login.button.signOut">Desconectado</string>
+    <string name="login.button.signUp">Ir a Crear cuenta &gt;</string>
+
+    <string name="login.messageSuccess.signUp">Usuario agregado exitosamente</string>
+
+    <string name="login.messageError.signIn">Imposible iniciar sesión %s</string>
+    <string name="login.messageError.signUp">Imposible registrar nuevo usuario %s</string>
+
+</resources>

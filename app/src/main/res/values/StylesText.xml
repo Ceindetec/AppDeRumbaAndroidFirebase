@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Estilos de Texto Primarios App De Rumba -->
+
+    <style name="deRumbaStyleTextPrimarySmall" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorPrimaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeSmall</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="deRumbaStyleTextPrimaryMedium" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorPrimaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeMedium</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="deRumbaStyleTextPrimaryLarge" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorPrimaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeLarge</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <!--Estilos de Texto Secundarios App De Rumba -->
+
+    <style name="deRumbaStyleTextSecondarySmall" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorSecondaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeSmall</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="deRumbaStyleTextSecondaryMedium" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorSecondaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeMedium</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="deRumbaStyleTextSecondaryLarge" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textColor">@color/deRumbaColorSecondaryText</item>
+        <item name="android:textSize">@dimen/deRumbaTextSizeLarge</item>
+        <item name="android:typeface">sans</item>
+    </style>
+</resources>

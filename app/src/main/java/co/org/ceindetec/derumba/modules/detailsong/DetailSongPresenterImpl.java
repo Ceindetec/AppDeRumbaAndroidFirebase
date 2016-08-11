@@ -18,6 +18,10 @@ public class DetailSongPresenterImpl implements DetailSongPresenter {
     private DetailSongView detailSongView;
     private DetailSongInteractor detailSongInteractor;
 
+    /**
+     *
+     * @param detailSongView
+     */
     public DetailSongPresenterImpl(DetailSongView detailSongView) {
         this.detailSongView = detailSongView;
         this.eventBus = GreenRobotEventBus.getInstance();
@@ -51,6 +55,15 @@ public class DetailSongPresenterImpl implements DetailSongPresenter {
     }
 
     /**
+     * @param codigoPlaylist
+     * @param codigoCancion
+     */
+    @Override
+    public void verifyLikeSong(String codigoPlaylist, String codigoCancion) {
+        detailSongInteractor.verifyLikeSong(codigoPlaylist, codigoCancion);
+    }
+
+    /**
      * @param codigoCancion
      */
     @Override
@@ -78,6 +91,12 @@ public class DetailSongPresenterImpl implements DetailSongPresenter {
                 break;
             case DetailSongEvent.onRankSongError:
                 onRankSongError();
+                break;
+            case DetailSongEvent.onUserLike:
+                onUserLike();
+                break;
+            case DetailSongEvent.onUserNoLike:
+                onUserNoLike();
                 break;
         }
     }
@@ -114,5 +133,18 @@ public class DetailSongPresenterImpl implements DetailSongPresenter {
         detailSongView.rankSongError();
     }
 
+    /**
+     *
+     */
+    private void onUserLike() {
+        detailSongView.verifyUserLike(true);
+    }
+
+    /**
+     *
+     */
+    private void onUserNoLike() {
+        detailSongView.verifyUserLike(false);
+    }
 
 }

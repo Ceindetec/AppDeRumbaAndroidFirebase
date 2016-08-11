@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DeRumba</string>
+
+    <!-- Strings de uso general de la aplicacion-->
+    <string name="general.message.loading">Cargando...</string>
+
+    <!-- Strings utilizados en los menus-->
+    <string name="menu.action.sign_off">Cerrar sesión</string>
+
+</resources>

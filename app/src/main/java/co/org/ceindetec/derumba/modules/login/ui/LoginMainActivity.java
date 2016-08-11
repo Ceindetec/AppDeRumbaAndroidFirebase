@@ -2,6 +2,7 @@ package co.org.ceindetec.derumba.modules.login.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -59,8 +60,10 @@ public class LoginMainActivity extends AppCompatActivity implements LoginMainVie
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_login_main);
+        setContentView(R.layout.activity_login);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ButterKnife.bind(this);
 
         //Implementacion del presentador
@@ -82,12 +85,12 @@ public class LoginMainActivity extends AppCompatActivity implements LoginMainVie
 
             @Override
             public void onCancel() {
-                Snackbar.make(rlyLoginContainerLogo, R.string.login_message_cancel_facebook, Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(rlyLoginContainerLogo, R.string.login_messageCancel_facebook, Snackbar.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(FacebookException error) {
-                Snackbar.make(rlyLoginContainerLogo, R.string.login_message_error, Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(rlyLoginContainerLogo, R.string.login_messageError_login, Snackbar.LENGTH_SHORT).show();
             }
         });
     }
@@ -136,7 +139,7 @@ public class LoginMainActivity extends AppCompatActivity implements LoginMainVie
      */
     private void loginError() {
 
-        Snackbar.make(rlyLoginContainerLogo, R.string.login_message_error, Snackbar.LENGTH_SHORT).show();
+        Snackbar.make(rlyLoginContainerLogo, R.string.login_messageError_login, Snackbar.LENGTH_SHORT).show();
 
     }
 

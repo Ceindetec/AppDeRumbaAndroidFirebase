@@ -45,7 +45,38 @@ public class DetailSongRepositoryImpl implements DetailSongRepository {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Song infoSong = dataSnapshot.getValue(Song.class);
-                post(infoSong, DetailSongEvent.onGetInfoSongSuccess);
+                if (infoSong == null) {
+                    post(null, DetailSongEvent.onGetInfoSongError);
+                } else {
+                    post(infoSong, DetailSongEvent.onGetInfoSongSuccess);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    /**
+     * @param codigoPlaylist
+     * @param codigoCancion
+     */
+    @Override
+    public void verifyLikeSong(String codigoPlaylist, String codigoCancion) {
+        firebaseHelper.getReferencePlaylistSong(codigoPlaylist, codigoCancion).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                PlaylistSong playlistSong = dataSnapshot.getValue(PlaylistSong.class);
+
+                String uid = firebaseAuth.getCurrentUser().getUid();
+
+                if (playlistSong.likes.containsKey(uid)) {
+                    post(DetailSongEvent.onUserLike);
+                } else {
+                    post(DetailSongEvent.onUserNoLike);
+                }
             }
 
             @Override
@@ -61,7 +92,7 @@ public class DetailSongRepositoryImpl implements DetailSongRepository {
      */
     @Override
     public void rankSong(String codigoPlaylist, String codigoCancion) {
-        firebaseHelper.getReferencePlaylistSong(codigoPlaylist,codigoCancion).runTransaction(new Transaction.Handler() {
+        firebaseHelper.getReferencePlaylistSong(codigoPlaylist, codigoCancion).runTransaction(new Transaction.Handler() {
             @Override
             public Transaction.Result doTransaction(MutableData mutableData) {
                 PlaylistSong playlistSong = mutableData.getValue(PlaylistSong.class);
@@ -96,7 +127,6 @@ public class DetailSongRepositoryImpl implements DetailSongRepository {
     }
 
     /**
-     *
      * @param type
      */
     private void post(int type) {
@@ -106,7 +136,6 @@ public class DetailSongRepositoryImpl implements DetailSongRepository {
     }
 
     /**
-     *
      * @param infoSong
      * @param type
      */

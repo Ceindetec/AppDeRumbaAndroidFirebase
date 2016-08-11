@@ -21,6 +21,15 @@ public class DetailSongInteractorImpl implements DetailSongInteractor {
     }
 
     /**
+     * @param codigoPlaylist
+     * @param codigoCancion
+     */
+    @Override
+    public void verifyLikeSong(String codigoPlaylist, String codigoCancion) {
+        detailSongRepository.verifyLikeSong(codigoPlaylist, codigoCancion);
+    }
+
+    /**
      * @param codigoCacion
      */
     @Override

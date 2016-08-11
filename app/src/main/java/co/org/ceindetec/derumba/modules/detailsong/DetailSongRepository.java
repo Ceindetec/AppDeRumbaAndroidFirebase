@@ -7,6 +7,8 @@ public interface DetailSongRepository {
 
     void getInfoSong(String codigoCancion);
 
+    void verifyLikeSong(String codigoPlaylist, String codigoCancion);
+
     void rankSong(String codigoPlaylist, String codigoCancion);
 
 }

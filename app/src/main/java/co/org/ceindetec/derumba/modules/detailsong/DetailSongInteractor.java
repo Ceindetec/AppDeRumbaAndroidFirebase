@@ -7,6 +7,8 @@ public interface DetailSongInteractor {
 
     void getInfoSong(String codigoCancion);
 
+    void verifyLikeSong(String codigoPlaylist, String codigoCancion);
+
     void rankSong(String codigoPlaylist, String codigoCacion);
 
 }
